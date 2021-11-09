@@ -12,6 +12,9 @@ class MyClient(discord.Client):
 
         if message.author == client.user:
             return
+            
+        if 'happy birthday' in message.content.lower():
+            await message.channel.send('Happy Birthday! 🎈🎉')
 
         brooklyn_99_quotes = [
             'I\'m the human form of the 💯 emoji.',
