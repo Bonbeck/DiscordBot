@@ -5,10 +5,10 @@ with open("token.json") as jToken:
 
 class MyClient(discord.Client):
     async def on_ready(self):
-        print('Logged on as {0}!'.format(self.user))
+        print(f'Logged on as {self.user}!')
 
     async def on_message(self, message):
-        print('Message from {0.author}: {0.content}'.format(message))
+        print(f'Message from {message.author}: {message.content}')
 
 client = MyClient()
 client.run(token)
