@@ -1,11 +1,13 @@
 import discord, json, random
-
+import DiscordVoiceBot
+from DiscordVoiceBot import Music
 from discord.ext import commands
 
 with open("token.json") as jToken:
     token = json.load(jToken)
 
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix=commands.when_mentioned_or("!"),
+                   description='Relatively simple music bot example')
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -33,6 +35,8 @@ class MyClient(discord.Client):
             response = random.choice(brooklyn_99_quotes)
             await message.channel.send(response)
 
-client = MyClient()
+        
 
+bot.add_cog(Music(bot))
+client = MyClient()
 client.run(token)
