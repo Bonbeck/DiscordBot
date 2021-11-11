@@ -1,7 +1,11 @@
 import discord, json, random
 
+from discord.ext import commands
+
 with open("token.json") as jToken:
     token = json.load(jToken)
+
+bot = commands.Bot(command_prefix='!')
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -12,7 +16,7 @@ class MyClient(discord.Client):
 
         if message.author == client.user:
             return
-            
+
         if 'happy birthday' in message.content.lower():
             await message.channel.send('Happy Birthday! 🎈🎉')
 
