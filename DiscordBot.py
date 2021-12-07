@@ -1,4 +1,4 @@
-import discord, json, random
+import discord, json, random, previsao
 import DiscordVoiceBot
 from DiscordVoiceBot import Music
 from discord.ext import commands
@@ -22,6 +22,9 @@ class MyClient(discord.Client):
         if 'happy birthday' in message.content.lower():
             await message.channel.send('Happy Birthday! 🎈🎉')
 
+        if "previsao do tempo" in message.content.lower():
+            await message.channel.send(previsao.tempo())
+
         brooklyn_99_quotes = [
             'I\'m the human form of the 💯 emoji.',
             'Bingpot!',
@@ -33,9 +36,7 @@ class MyClient(discord.Client):
 
         if message.content == '99!':
             response = random.choice(brooklyn_99_quotes)
-            await message.channel.send(response)
-
-        
+            await message.channel.send(response)     
 
 bot.add_cog(Music(bot))
 client = MyClient()
